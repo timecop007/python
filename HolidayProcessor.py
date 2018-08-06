@@ -1,23 +1,23 @@
 import fileinput
-from functools import reduce
 from datetime import datetime, timedelta
+from functools import reduce
 
 
 class HolidayProcessor:
-    def __init__(self) -> None:
+    def __init__(self):
         self.project = ''
         self.holidays = []
 
-    def header(self) -> None:
+    def header(self):
         print("BEGIN")
 
-    def detail(self, project, current_date, target_date) -> None:
-        pass
-
-    def trailer(self) -> None:
+    def trailer(self):
         print("END;")
 
-    def get_input(self) -> None:
+    def detail(self, project, current_date, target_date):
+        pass
+
+    def get_input(self):
         for line in fileinput.input():
             line = line.strip()
             if len(line) == 0:
@@ -31,8 +31,8 @@ class HolidayProcessor:
                 else:
                     raise ValueError('Date list must be in ascending order!')
 
-    def generate(self, project, holidays) -> datetime:
-        def gen_one_date(x, y) -> datetime:
+    def generate(self, project, holidays):
+        def one_date(x, y):
             current_date = target_date = x
             while True:
                 target_date += timedelta(1)
@@ -41,9 +41,9 @@ class HolidayProcessor:
                 self.detail(project, current_date, target_date)
             return y
 
-        return reduce(gen_one_date, holidays)
+        return reduce(one_date, holidays)
 
-    def process(self) -> None:
+    def process(self):
         self.get_input()
         self.header()
         self.generate(self.project, self.holidays)

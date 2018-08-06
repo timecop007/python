@@ -9,7 +9,7 @@ FIELDS = (
     'ORG_CODE', 'JOB_STREAM', 'JOB_STEP', 'DESC', 'START_STATUS', 'END_STATUS', START_TIME, 'END_TIME', 'DURATION')
 
 
-def job_stat():
+def job_list():
     data = {}
     regex = re.compile("^\[(.*)\]\[.*\]\[(\d{4})\]\[(.*)\]\[(.*)\]\[(.*)\]\[(\w)\]$")
     for line in fileinput.input():
@@ -30,7 +30,7 @@ def job_stat():
 def gen_csv():
     writer = csv.DictWriter(sys.stdout, FIELDS)
     writer.writeheader()
-    writer.writerows(job_stat())
+    writer.writerows(job_list())
 
 
 if __name__ == "__main__":
