@@ -5,7 +5,8 @@ class GenMtxDummyCycle(HolidayProcessor):
     def header(self):
         print('DECLARE')
         print('  DCID MT_TDC_DUMMY_CYCLE.DUMMY_CYCLE_ID%TYPE;')
-        super().header()
+        print('BEGIN')
+        print('  SELECT MAX(DUMMY_CYCLE_ID) + 1 INTO DCID FROM MT_TDC_DUMMY_CYCLE;')
 
     def detail(self, project, current_date, target_date):
         print("  INSERT INTO MT_TDC_DUMMY_CYCLE (DUMMY_CYCLE_ID,DATA_VERSION,ORG_CODE,RUN_ON_CYCLE_DATE,"
