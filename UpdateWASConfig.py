@@ -35,11 +35,12 @@ def log_only(folder):
     for x in folder.xpath('folder[@name!="log"]'):
         folder.remove(x)
     folder.set('name', folder.get('name').replace('W$', 'L$'))
+    folder.set('name', folder.get('name').replace('w$', 'L$'))
     return folder
 
 
 def one_vob(vob_path):
-    base_path = f'C:/Development/{vob_path}/was9open/ConfigFile'
+    base_path = f'C:/Development/{vob_path}/was9open/ConfigFile/ConfigFile'
     sites = (('ITD', 'S'), ('UAT', 'U'), ('DRS', 'P'), ('PRD', 'D'))
     servers = (('71A', '81'), ('71B', '82'), ('72A', '91'), ('72B', '92'))
     for site in sites:
