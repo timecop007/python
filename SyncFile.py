@@ -2,15 +2,16 @@ from shutil import copy2
 import os
 import stat
 
+# files = (
+#     r'was9open\Setup\setupAll.bat',
+#     r'was9open\Setup\setup.bat',
+#     r'was9open\Setup\setupFolder.bat',
+# )
 files = (
-    r'was9open\Setup\setupAll.bat',
-    r'was9open\Setup\setup.bat',
     r'was9open\Setup\setupFolder.bat',
 )
-# files = (
-#     r'was9open\Setup\setup.bat',
-# )
-bases = (r'C:\Development', r'\\SWWS9APWH81\D$\temp\Ref_67678_irs_ors_fxintra_saa_murex_mt')
+# bases = (r'C:\Development', r'\\SWWS9APWH81\D$\temp\Ref_67678_irs_ors_fxintra_saa_murex_mt')
+bases = (r'C:\Development', )
 views = ('MTX', 'IRS', 'ORS', 'TRS', 'MRX', 'SAA')
 vobs = ('mt', 'irs', 'ors', 'fxintra', 'murex', 'saa')
 

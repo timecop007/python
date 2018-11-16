@@ -65,7 +65,7 @@ def one_vob(vob_path):
 
 def main():
     vob_paths = ('MTX/mt', 'MRX/murex', 'TRS/fxintra', 'IRS/irs', 'ORS/ors', 'SAA/saa')
-    for vob_path in vob_paths[1:2]:
+    for vob_path in vob_paths[0:1]:
         one_vob(vob_path)
 
 

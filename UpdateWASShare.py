@@ -15,7 +15,7 @@ def update(file, domain):
     print(f'Updating file {file}')
     xml = etree.parse(file)
     root = xml.getroot()
-    for folder in root.xpath('//folder'):
+    for folder in root.xpath('//shareFolder'):
         remove(folder, 'Domain Admins')
         remove(folder, 'Administrators')
         if domain == ITD_DOMAIN:
@@ -23,10 +23,10 @@ def update(file, domain):
         else:
             remove(folder, 'Pdomain Service Grp')
         remove(folder, 'WAS_Service_Group')
-        insert(folder, fr'{domain}\WAS_Service_Group', 'RWXDPO;RWXDPO')
+        insert(folder, fr'{domain}\WAS_Service_Group', 'Full')
         if domain == P_DOMAIN:
             remove(folder, 'drwpd161')
-            insert(folder, fr'{domain}\drwpd161', 'RWXDPO;RWXDPO')
+            insert(folder, fr'{domain}\drwpd161', 'Full')
     print(beautify(root), file=open(file, 'w+'))
 
 
@@ -67,7 +67,7 @@ def one_vob(vob_path):
                 server_name = f'CWWS9APWH{server}'
             else:
                 server_name = f'{site}WWS9APWH{server}'
-            file = f'{base_path}/{site}/ACL/acl_{server_name}.xml'
+            file = f'{base_path}/{site}/ShareFolder/share_{server_name}.xml'
             update(file, domain)
 
 
